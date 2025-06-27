@@ -1,63 +1,700 @@
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Поехали!</title>
-    <meta name="description" content="Poehali.dev — запусти свой сайт за минуту!"/>
-    <meta name="author" content="poehali.dev"/>
+    <title>WashMart - Стиральные машины лучших брендов</title>
+    <meta name="description" content="Широкий выбор стиральных машин Samsung, LG, Bosch, Whirlpool. Гарантия качества и быстрая доставка."/>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-    <meta property="og:title" content="Поехали!">
-    <meta property="og:description" content="Ваш личный программист, который делает сайты в 30 раз быстрее обычного.">
-    <meta property="og:image:width" content="4800">
-    <meta property="og:image:height" content="2520">
-    <meta property="og:image:alt" content="Поехали! — сервис разработки сайтов с помощью ИИ">
-    <meta property="og:image" content="https://cdn.poehali.dev/intertnal/img/og.png">
-    <meta name="twitter:image" content="https://cdn.poehali.dev/intertnal/img/og.png">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    <!-- IMPORTANT: DO NOT REMOVE THIS SCRIPT TAG OR THIS COMMENT! -->
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            border-bottom: 1px solid #e5e7eb;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 64px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            color: #1f2937;
+        }
+
+        .logo-icon {
+            width: 24px;
+            height: 24px;
+            color: #2563eb;
+        }
+
+        .logo-text {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        nav {
+            display: flex;
+            gap: 32px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #374151;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #2563eb;
+        }
+
+        .auth-buttons {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .btn {
+            padding: 8px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .btn-primary {
+            background: #2563eb;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #1d4ed8;
+        }
+
+        .btn-ghost {
+            color: #374151;
+        }
+
+        .btn-ghost:hover {
+            color: #2563eb;
+        }
+
+        /* Hero */
+        .hero {
+            background: linear-gradient(to bottom, #f9fafb, white);
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            font-weight: bold;
+            color: #1f2937;
+            margin-bottom: 24px;
+        }
+
+        .hero .highlight {
+            color: #2563eb;
+        }
+
+        .hero p {
+            font-size: 20px;
+            color: #6b7280;
+            margin-bottom: 32px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn-large {
+            padding: 16px 32px;
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        /* Brands Section */
+        .brands {
+            padding: 64px 0;
+            background: white;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        .section-header h2 {
+            font-size: 36px;
+            font-weight: bold;
+            color: #1f2937;
+            margin-bottom: 16px;
+        }
+
+        .section-header p {
+            font-size: 18px;
+            color: #6b7280;
+        }
+
+        .brands-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 32px;
+        }
+
+        .brand-card {
+            text-align: center;
+            padding: 24px;
+            border-radius: 8px;
+            background: #f9fafb;
+            transition: box-shadow 0.3s;
+        }
+
+        .brand-card:hover {
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        .brand-logo {
+            width: 80px;
+            height: 48px;
+            object-fit: contain;
+            margin: 0 auto 16px;
+            border-radius: 4px;
+        }
+
+        .brand-card h3 {
+            font-size: 20px;
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 8px;
+        }
+
+        .brand-card p {
+            font-size: 14px;
+            color: #6b7280;
+        }
+
+        /* Popular Models */
+        .models {
+            padding: 64px 0;
+            background: #f9fafb;
+        }
+
+        .models-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 32px;
+        }
+
+        .model-card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: box-shadow 0.3s;
+        }
+
+        .model-card:hover {
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        .model-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        .model-content {
+            padding: 24px;
+        }
+
+        .model-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .model-brand {
+            font-size: 18px;
+            font-weight: 600;
+            color: #1f2937;
+        }
+
+        .rating {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .star {
+            color: #fbbf24;
+            font-size: 16px;
+        }
+
+        .rating-text {
+            font-size: 14px;
+            color: #6b7280;
+        }
+
+        .model-name {
+            color: #6b7280;
+            margin-bottom: 16px;
+        }
+
+        .model-specs {
+            margin-bottom: 16px;
+        }
+
+        .spec-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-size: 14px;
+            color: #6b7280;
+        }
+
+        .model-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .price {
+            font-size: 24px;
+            font-weight: bold;
+            color: #2563eb;
+        }
+
+        /* Footer */
+        footer {
+            background: #1f2937;
+            color: white;
+            padding: 48px 0;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 32px;
+        }
+
+        .footer-section h3 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .footer-section p {
+            color: #9ca3af;
+            font-size: 14px;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .footer-links a {
+            color: #9ca3af;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 16px;
+        }
+
+        .social-links a {
+            color: #9ca3af;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #374151;
+            margin-top: 32px;
+            padding-top: 32px;
+            text-align: center;
+            color: #9ca3af;
+            font-size: 14px;
+        }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                height: auto;
+                padding: 16px 0;
+            }
+
+            nav {
+                margin-top: 16px;
+                gap: 16px;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .brands-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 16px;
+            }
+
+            .models-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+    <meta name="pp-name" value="washing-machine-sales-site">
+  </head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="#" class="logo">
+                    <svg class="logo-icon" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+                    </svg>
+                    <span class="logo-text">WashMart</span>
+                </a>
+
+                <nav>
+                    <a href="#catalog">Каталог</a>
+                    <a href="#about">О нас</a>
+                    <a href="#delivery">Доставка</a>
+                    <a href="#contacts">Контакты</a>
+                </nav>
+
+                <div class="auth-buttons">
+                    <a href="#login" class="btn btn-ghost">Войти</a>
+                    <a href="#register" class="btn btn-primary">Регистрация</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>
+                Стиральные машины<br>
+                <span class="highlight">лучших брендов</span>
+            </h1>
+            <p>
+                Широкий выбор стиральных машин Samsung, LG, Bosch, Whirlpool. 
+                Гарантия качества, выгодные цены и быстрая доставка.
+            </p>
+            <a href="#catalog" class="btn btn-primary btn-large">Смотреть каталог</a>
+        </div>
+    </section>
+
+    <!-- Featured Brands -->
+    <section class="brands">
+        <div class="container">
+            <div class="section-header">
+                <h2>Популярные бренды</h2>
+                <p>Работаем только с проверенными производителями</p>
+            </div>
+
+            <div class="brands-grid">
+                <div class="brand-card">
+                    <img src="https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?w=150&h=80&fit=crop&crop=center" 
+                         alt="Samsung" class="brand-logo">
+                    <h3>Samsung</h3>
+                    <p>Инновационные технологии стирки</p>
+                </div>
+
+                <div class="brand-card">
+                    <img src="https://images.unsplash.com/photo-1586953208448-b95a79798f07?w=150&h=80&fit=crop&crop=center" 
+                         alt="LG" class="brand-logo">
+                    <h3>LG</h3>
+                    <p>Надежность и эффективность</p>
+                </div>
+
+                <div class="brand-card">
+                    <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=150&h=80&fit=crop&crop=center" 
+                         alt="Bosch" class="brand-logo">
+                    <h3>Bosch</h3>
+                    <p>Немецкое качество</p>
+                </div>
+
+                <div class="brand-card">
+                    <img src="https://images.unsplash.com/photo-1626806787461-102c1bfaaea1?w=150&h=80&fit=crop&crop=center" 
+                         alt="Whirlpool" class="brand-logo">
+                    <h3>Whirlpool</h3>
+                    <p>Проверенный временем бренд</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Popular Models -->
+    <section class="models">
+        <div class="container">
+            <div class="section-header">
+                <h2>Популярные модели</h2>
+                <p>Топ-3 самых продаваемых стиральных машин</p>
+            </div>
+
+            <div class="models-grid">
+                <div class="model-card">
+                    <img src="https://images.unsplash.com/photo-1610557892470-55d9e80c0bce?w=300&h=300&fit=crop&crop=center" 
+                         alt="Samsung WW60J3080LW" class="model-image">
+                    
+                    <div class="model-content">
+                        <div class="model-header">
+                            <h3 class="model-brand">Samsung</h3>
+                            <div class="rating">
+                                <span class="star">★</span>
+                                <span class="rating-text">4.5</span>
+                            </div>
+                        </div>
+
+                        <p class="model-name">WW60J3080LW</p>
+
+                        <div class="model-specs">
+                            <div class="spec-row">
+                                <span>Загрузка:</span>
+                                <span>6 кг</span>
+                            </div>
+                            <div class="spec-row">
+                                <span>Отжим:</span>
+                                <span>1000 об/мин</span>
+                            </div>
+                        </div>
+
+                        <div class="model-footer">
+                            <div class="price">25 990 ₽</div>
+                            <a href="#catalog" class="btn btn-primary">Подробнее</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="model-card">
+                    <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=300&h=300&fit=crop&crop=center" 
+                         alt="LG F2J5HS4W" class="model-image">
+                    
+                    <div class="model-content">
+                        <div class="model-header">
+                            <h3 class="model-brand">LG</h3>
+                            <div class="rating">
+                                <span class="star">★</span>
+                                <span class="rating-text">4.7</span>
+                            </div>
+                        </div>
+
+                        <p class="model-name">F2J5HS4W</p>
+
+                        <div class="model-specs">
+                            <div class="spec-row">
+                                <span>Загрузка:</span>
+                                <span>7 кг</span>
+                            </div>
+                            <div class="spec-row">
+                                <span>Отжим:</span>
+                                <span>1200 об/мин</span>
+                            </div>
+                        </div>
+
+                        <div class="model-footer">
+                            <div class="price">32 590 ₽</div>
+                            <a href="#catalog" class="btn btn-primary">Подробнее</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="model-card">
+                    <img src="https://images.unsplash.com/photo-1626806787461-102c1bfaaea1?w=300&h=300&fit=crop&crop=center" 
+                         alt="Bosch WLG20260OE" class="model-image">
+                    
+                    <div class="model-content">
+                        <div class="model-header">
+                            <h3 class="model-brand">Bosch</h3>
+                            <div class="rating">
+                                <span class="star">★</span>
+                                <span class="rating-text">4.6</span>
+                            </div>
+                        </div>
+
+                        <p class="model-name">WLG20260OE</p>
+
+                        <div class="model-specs">
+                            <div class="spec-row">
+                                <span>Загрузка:</span>
+                                <span>5 кг</span>
+                            </div>
+                            <div class="spec-row">
+                                <span>Отжим:</span>
+                                <span>1000 об/мин</span>
+                            </div>
+                        </div>
+
+                        <div class="model-footer">
+                            <div class="price">28 490 ₽</div>
+                            <a href="#catalog" class="btn btn-primary">Подробнее</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="logo" style="margin-bottom: 16px;">
+                        <svg class="logo-icon" fill="currentColor" viewBox="0 0 24 24" style="color: #60a5fa;">
+                            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+                        </svg>
+                        <span class="logo-text">WashMart</span>
+                    </div>
+                    <p>Ваш надежный партнер в выборе стиральных машин. Качество, сервис, доступные цены.</p>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Быстрые ссылки</h3>
+                    <div class="footer-links">
+                        <a href="#catalog">Каталог</a>
+                        <a href="#about">О компании</a>
+                        <a href="#delivery">Доставка</a>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Поддержка</h3>
+                    <div class="footer-links">
+                        <a href="#contacts">Контакты</a>
+                        <a href="tel:+7-800-123-45-67">8 (800) 123-45-67</a>
+                        <a href="mailto:info@washmart.ru">info@washmart.ru</a>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Мы в соцсетях</h3>
+                    <div class="social-links">
+                        <a href="#">📞</a>
+                        <a href="#">✉️</a>
+                        <a href="#">📍</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                © 2024 WashMart. Все права защищены.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Add scroll effect to header
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
+                header.style.backdropFilter = 'blur(10px)';
+            } else {
+                header.style.background = 'white';
+                header.style.backdropFilter = 'none';
+            }
+        });
+    </script>
 
     <!-- IMPORTANT: DO NOT REMOVE THIS SCRIPT TAG OR THIS COMMENT! -->
     <script src="https://cdn.poehali.dev/intertnal/js/pp-min-2.js"></script>
     <script src="https://cdn.poehali.dev/intertnal/js/route-min.js"></script>
+    <script src="https://cdn.poehali.dev/intertnal/js/inspector-min.js"></script>
     <!-- IMPORTANT: DO NOT REMOVE THIS SCRIPT TAG OR THIS COMMENT! -->
 
-    <meta name="pp-name" value="washing-machine-sales-site">
-      <script src="https://cdn.poehali.dev/intertnal/js/inspector-min.js"></script>
-  </head>
-
-<body>
-<div id="root"></div>
-<script type="module" src="/src/main.tsx"></script>
-
-<!-- Yandex.Metrika counter -->
-<script type="text/javascript">
-    (function (m, e, t, r, i, k, a) {
-        m[i] = m[i] || function () {
-            (m[i].a = m[i].a || []).push(arguments)
-        };
-        m[i].l = 1 * new Date();
-        for (var j = 0; j < document.scripts.length; j++) {
-            if (document.scripts[j].src === r) {
-                return;
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+        (function (m, e, t, r, i, k, a) {
+            m[i] = m[i] || function () {
+                (m[i].a = m[i].a || []).push(arguments)
+            };
+            m[i].l = 1 * new Date();
+            for (var j = 0; j < document.scripts.length; j++) {
+                if (document.scripts[j].src === r) {
+                    return;
+                }
             }
-        }
-        k = e.createElement(t), a = e.getElementsByTagName(t)[0], k.async = 1, k.src = r, a.parentNode.insertBefore(k, a)
-    })
-    (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+            k = e.createElement(t), a = e.getElementsByTagName(t)[0], k.async = 1, k.src = r, a.parentNode.insertBefore(k, a)
+        })
+        (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
 
-    ym(101026698, "init", {
-        trustedDomains: ["poehali.dev"],
-        clickmap: true,
-        trackLinks: true,
-        accurateTrackBounce: true,
-        webvisor: true,
-        trackHash: true
-    });
-</script>
-<noscript>
-    <div><img src="https://mc.yandex.ru/watch/101026698" style="position:absolute; left:-9999px;" alt=""/></div>
-</noscript>
-<!-- /Yandex.Metrika counter -->
+        ym(101026698, "init", {
+            trustedDomains: ["poehali.dev"],
+            clickmap: true,
+            trackLinks: true,
+            accurateTrackBounce: true,
+            webvisor: true,
+            trackHash: true
+        });
+    </script>
+    <noscript>
+        <div><img src="https://mc.yandex.ru/watch/101026698" style="position:absolute; left:-9999px;" alt=""/></div>
+    </noscript>
+    <!-- /Yandex.Metrika counter -->
 </body>
 </html>
